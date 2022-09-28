@@ -1,8 +1,13 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('<App />', () => {
+  it('should open the AccordionPanel when AccordionButton is click', () => {
+    render(<App />);
+
+    userEvent.click(screen.getByRole('button'));
+
+    expect(screen.getByRole('region')).toBeInTheDocument();
+  });
 });
